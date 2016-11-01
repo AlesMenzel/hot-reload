@@ -8,7 +8,7 @@ const app = Express();
 const port = process.env.PORT || 3000;
 const environment = process.env.NODE_ENV || 'production';
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.resolve('views'));
 app.set('view engine', 'pug');
 
 if (environment === 'development') {
@@ -23,4 +23,6 @@ app.get('/', (req, res) => {
 
 app.use('/assets/', Express.static('dist/client'));
 
-app.listen(port);
+app.listen(port, () => {
+	console.log(`Listening on port: ${port}`);
+});
