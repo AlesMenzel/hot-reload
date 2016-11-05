@@ -1,9 +1,12 @@
 doctype html
-html
-    head
-        meta(charset='utf-8')
+html(lang='en')
+	head
+		meta(charset='utf-8')
 
-        title= title
-    body
-        div#root
-        script(src='/assets/bundle.js')
+		title= title
+	body
+		script.
+			window.__PRELOADED_STATE__ = !{preloadedState}
+		#root
+			!= html
+		script(src='/assets/bundle.js')

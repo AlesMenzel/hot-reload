@@ -3,7 +3,7 @@ import Component from '../components/Counter'
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		value: state
+		value: state.count
 	};
 };
 

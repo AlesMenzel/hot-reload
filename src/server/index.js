@@ -1,7 +1,8 @@
 import Express from 'express';
 import path from 'path';
 import React from 'react';
-import hotReload from './hot-reload/hot-reload';
+import hotReload from './hot-reload';
+import serverRendering from './server-rendering';
 // import { renderToString } from 'react-dom/server';
 
 const app = Express();
@@ -15,13 +16,17 @@ if (environment === 'development') {
 	hotReload(app);
 }
 
+app.use('/assets/', Express.static('dist/client'));
+
+if (environment === 'production') {
+	serverRendering(app);
+}
+
 app.get('/', (req, res) => {
 	res.render('index', {
 		title: 'Title'
 	});
 });
-
-app.use('/assets/', Express.static('dist/client'));
 
 app.listen(port, () => {
 	console.log(`Listening on port: ${port}`);

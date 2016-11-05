@@ -7,7 +7,7 @@
     "clean": "./node_modules/.bin/rimraf.cmd ./dist",
     "serve": "node ./dist/server/server.js",
     "build": "npm run build:server && npm run build:client",
-    "restart": "npm run build && npm run serve",
+    "restart": "npm run clean && npm run build && npm run serve",
     "build:client": "./node_modules/.bin/webpack.cmd --progress --config ./build/client/index.js",
     "build:client:dev": "./node_modules/.bin/webpack.cmd --progress --config ./build/client/config.dev.js",
     "build:client:prod": "./node_modules/.bin/webpack.cmd --progress --config ./build/client/config.prod.js",
